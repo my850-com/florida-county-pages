@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Florida Counties | Lis Pendens Data</title>
+    <meta name="description" content="Browse Lis Pendens data for all 67 Florida counties. Find pre-foreclosure opportunities by region.">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, Helvetica, sans-serif; line-height: 1.6; color: #333; background: #f5f5f5; }
+        .header { background: #003366; padding: 20px; text-align: center; }
+        .header-logo { color: #fff; font-size: 24px; font-weight: bold; letter-spacing: 2px; }
+        .header-tagline { color: #ccc; font-size: 12px; margin-top: 5px; letter-spacing: 1px; }
+        .back-link { color: #fff; text-decoration: none; font-size: 14px; display: inline-block; margin-top: 15px; padding: 8px 20px; border: 1px solid #fff; border-radius: 25px; }
+        .back-link:hover { background: rgba(255,255,255,0.1); }
+        .hero { background: linear-gradient(135deg, #003366 0%, #0066cc 100%); color: #fff; padding: 60px 20px; text-align: center; }
+        .hero h1 { font-size: 42px; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 2px; }
+        .hero p { font-size: 18px; color: #e0e0e0; max-width: 600px; margin: 0 auto; }
+        .content { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
+        .search-box { text-align: center; margin-bottom: 40px; }
+        .search-box input { width: 100%; max-width: 500px; padding: 15px 25px; border: 2px solid #003366; border-radius: 30px; font-size: 16px; outline: none; }
+        .search-box input:focus { border-color: #FFD700; }
+        .region { margin-bottom: 50px; }
+        .region h2 { color: #003366; font-size: 24px; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 3px solid #FFD700; display: inline-block; }
+        .county-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+        .county-card { background: #fff; border-radius: 10px; padding: 25px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); transition: all 0.3s ease; text-decoration: none; color: inherit; display: block; }
+        .county-card:hover { transform: translateY(-5px); box-shadow: 0 5px 20px rgba(0,0,0,0.15); border-left: 4px solid #FFD700; }
+        .county-name { color: #003366; font-size: 20px; font-weight: bold; margin-bottom: 10px; }
+        .county-filings { color: #FFD700; background: #003366; display: inline-block; padding: 5px 15px; border-radius: 20px; font-weight: bold; font-size: 14px; }
+        .footer { background: #003366; color: #fff; padding: 40px 20px; text-align: center; margin-top: 60px; }
+        .footer-logo { font-size: 20px; font-weight: bold; margin-bottom: 10px; }
+        .footer-links { margin: 20px 0; }
+        .footer-links a { color: #fff; text-decoration: none; margin: 0 15px; font-size: 14px; }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-logo">FLORIDA LIS PENDENS</div>
+        <div class="header-tagline">A MY850.COM COMPANY</div>
+        <a href="https://floridalispendens.com" class="back-link">&larr; Back to Main Site</a>
+    </header>
+    
+    <section class="hero">
+        <h1>Florida Counties</h1>
+        <p>Browse Lis Pendens data for all 67 Florida counties. Click any county to view weekly filings and local market data.</p>
+    </section>
+    
+    <main class="content">
+        <div class="search-box">
+            <input type="text" id="countySearch" placeholder="Search counties..." onkeyup="filterCounties()">
+        </div>
+        
+        <div class="region" id="southeast" data-region>
+            <h2>South Florida — Highest Activity</h2>
+            <div class="county-grid">
+                <a href="./broward.html" class="county-card" data-county="broward">
+                    <div class="county-name">Broward County</div>
+                    <div class="county-filings">95 weekly filings</div>
+                </a>
+                <a href="./miami-dade.html" class="county-card" data-county="miami-dade">
+                    <div class="county-name">Miami-Dade County</div>
+                    <div class="county-filings">34 weekly filings</div>
+                </a>
+                <a href="./palm-beach.html" class="county-card" data-county="palm-beach">
+                    <div class="county-name">Palm Beach County</div>
+                    <div class="county-filings">65 weekly filings</div>
+                </a>
+                <a href="./lee.html" class="county-card" data-county="lee">
+                    <div class="county-name">Lee County</div>
+                    <div class="county-filings">30 weekly filings</div>
+                </a>
+                <a href="./collier.html" class="county-card" data-county="collier">
+                    <div class="county-name">Collier County</div>
+                    <div class="county-filings">20 weekly filings</div>
+                </a>
+                <a href="./monroe.html" class="county-card" data-county="monroe">
+                    <div class="county-name">Monroe County</div>
+                    <div class="county-filings">8 weekly filings</div>
+                </a>
+            </div>
+        </div>
+        
+        <div class="region" id="central" data-region>
+            <h2>Central Florida — Major Markets</h2>
+            <div class="county-grid">
+                <a href="./orange.html" class="county-card" data-county="orange">
+                    <div class="county-name">Orange County</div>
+                    <div class="county-filings">50 weekly filings</div>
+                </a>
+                <a href="./hillsborough.html" class="county-card" data-county="hillsborough">
+                    <div class="county-name">Hillsborough County</div>
+                    <div class="county-filings">52 weekly filings</div>
+                </a>
+                <a href="./polk.html" class="county-card" data-county="polk">
+                    <div class="county-name">Polk County</div>
+                    <div class="county-filings">42 weekly filings</div>
+                </a>
+                <a href="./pinellas.html" class="county-card" data-county="pinellas">
+                    <div class="county-name">Pinellas County</div>
+                    <div class="county-filings">40 weekly filings</div>
+                </a>
+                <a href="./duval.html" class="county-card" data-county="duval">
+                    <div class="county-name">Duval County</div>
+                    <div class="county-filings">35 weekly filings</div>
+                </a>
+                <a href="./brevard.html" class="county-card" data-county="brevard">
+                    <div class="county-name">Brevard County</div>
+                    <div class="county-filings">22 weekly filings</div>
+                </a>
+                <a href="./clay.html" class="county-card" data-county="clay">
+                    <div class="county-name">Clay County</div>
+                    <div class="county-filings">22 weekly filings</div>
+                </a>
+                <a href="./pasco.html" class="county-card" data-county="pasco">
+                    <div class="county-name">Pasco County</div>
+                    <div class="county-filings">27 weekly filings</div>
+                </a>
+            </div>
+        </div>
+        
+        <div class="region" id="northeast" data-region>
+            <h2>Northeast Florida — Coastal & River Markets</h2>
+            <div class="county-grid">
+                <a href="./st-johns.html" class="county-card" data-county="st-johns">
+                    <div class="county-name">St. Johns County</div>
+                    <div class="county-filings">12 weekly filings</div>
+                </a>
+                <a href="./volusia.html" class="county-card" data-county="volusia">
+                    <div class="county-name">Volusia County</div>
+                    <div class="county-filings">23 weekly filings</div>
+                </a>
+                <a href="./flagler.html" class="county-card" data-county="flagler">
+                    <div class="county-name">Flagler County</div>
+                    <div class="county-filings">8 weekly filings</div>
+                </a>
+                <a href="./nassau.html" class="county-card" data-county="nassau">
+                    <div class="county-name">Nassau County</div>
+                    <div class="county-filings">4 weekly filings</div>
+                </a>
+                <a href="./st-lucie.html" class="county-card" data-county="st-lucie">
+                    <div class="county-name">St. Lucie County</div>
+                    <div class="county-filings">13 weekly filings</div>
+                </a>
+                <a href="./martin.html" class="county-card" data-county="martin">
+                    <div class="county-name">Martin County</div>
+                    <div class="county-filings">6 weekly filings</div>
+                </a>
+            </div>
+        </div>
+        
+        <div class="region" id="northwest" data-region>
+            <h2>Northwest Florida — Panhandle</h2>
+            <div class="county-grid">
+                <a href="./bay.html" class="county-card" data-county="bay">
+                    <div class="county-name">Bay County</div>
+                    <div class="county-filings">8 weekly filings</div>
+                </a>
+                <a href="./escambia.html" class="county-card" data-county="escambia">
+                    <div class="county-name">Escambia County</div>
+                    <div class="county-filings">10 weekly filings</div>
+                </a>
+                <a href="./santa-rosa.html" class="county-card" data-county="santa-rosa">
+                    <div class="county-name">Santa Rosa County</div>
+                    <div class="county-filings">10 weekly filings</div>
+                </a>
+                <a href="./okaloosa.html" class="county-card" data-county="okaloosa">
+                    <div class="county-name">Okaloosa County</div>
+                    <div class="county-filings">12 weekly filings</div>
+                </a>
+                <a href="./walton.html" class="county-card" data-county="walton">
+                    <div class="county-name">Walton County</div>
+                    <div class="county-filings">5 weekly filings</div>
+                </a>
+                <a href="./gulf.html" class="county-card" data-county="gulf">
+                    <div class="county-name">Gulf County</div>
+                    <div class="county-filings">2 weekly filings</div>
+                </a>
+            </div>
+        </div>
+        
+        <div class="region" id="all-counties" data-region>
+            <h2>All Florida Counties A-Z</h2>
+            <div class="county-grid" id="allCounties">
+                <!-- Will be populated by JavaScript -->
+            </div>
+        </div>
+    </main>
+    
+    <footer class="footer">
+        <div class="footer-logo">FLORIDA LIS PENDENS</div>
+        <div class="footer-links">
+            <a href="https://floridalispendens.com">Home</a>
+            <a href="https://floridalispendens.com/#section-eUPZYoS1Vv">Pricing</a>
+        </div>
+    </footer>
+    
+    <script>
+        // County data - all 67 counties
+        const counties = [
+            {name: "Alachua", slug: "alachua", filings: "7"},
+            {name: "Baker", slug: "baker", filings: "1"},
+            {name: "Bay", slug: "bay", filings: "8"},
+            {name: "Bradford", slug: "bradford", filings: "1"},
+            {name: "Brevard", slug: "brevard", filings: "22"},
+            {name: "Broward", slug: "broward", filings: "95"},
+            {name: "Calhoun", slug: "calhoun", filings: "1"},
+            {name: "Charlotte", slug: "charlotte", filings: "8"},
+            {name: "Citrus", slug: "citrus", filings: "7"},
+            {name: "Clay", slug: "clay", filings: "22"},
+            {name: "Collier", slug: "collier", filings: "20"},
+            {name: "Columbia", slug: "columbia", filings: "5"},
+            {name: "DeSoto", slug: "desoto", filings: "1"},
+            {name: "Dixie", slug: "dixie", filings: "1"},
+            {name: "Duval", slug: "duval", filings: "35"},
+            {name: "Escambia", slug: "escambia", filings: "10"},
+            {name: "Flagler", slug: "flagler", filings: "8"},
+            {name: "Franklin", slug: "franklin", filings: "1"},
+            {name: "Gadsden", slug: "gadsden", filings: "2"},
+            {name: "Gilchrist", slug: "gilchrist", filings: "1"},
+            {name: "Glades", slug: "glades", filings: "1"},
+            {name: "Gulf", slug: "gulf", filings: "2"},
+            {name: "Hamilton", slug: "hamilton", filings: "1"},
+            {name: "Hardee", slug: "hardee", filings: "1"},
+            {name: "Hendry", slug: "hendry", filings: "1"},
+            {name: "Hernando", slug: "hernando", filings: "8"},
+            {name: "Highlands", slug: "highlands", filings: "6"},
+            {name: "Hillsborough", slug: "hillsborough", filings: "52"},
+            {name: "Holmes", slug: "holmes", filings: "1"},
+            {name: "Indian River", slug: "indian-river", filings: "4"},
+            {name: "Jackson", slug: "jackson", filings: "2"},
+            {name: "Jefferson", slug: "jefferson", filings: "1"},
+            {name: "Lafayette", slug: "lafayette", filings: "1"},
+            {name: "Lake", slug: "lake", filings: "17"},
+            {name: "Lee", slug: "lee", filings: "30"},
+            {name: "Leon", slug: "leon", filings: "4"},
+            {name: "Levy", slug: "levy", filings: "3"},
+            {name: "Liberty", slug: "liberty", filings: "1"},
+            {name: "Madison", slug: "madison", filings: "1"},
+            {name: "Manatee", slug: "manatee", filings: "17"},
+            {name: "Marion", slug: "marion", filings: "18"},
+            {name: "Martin", slug: "martin", filings: "6"},
+            {name: "Miami-Dade", slug: "miami-dade", filings: "34"},
+            {name: "Monroe", slug: "monroe", filings: "8"},
+            {name: "Nassau", slug: "nassau", filings: "4"},
+            {name: "Okaloosa", slug: "okaloosa", filings: "12"},
+            {name: "Okeechobee", slug: "okeechobee", filings: "1"},
+            {name: "Orange", slug: "orange", filings: "50"},
+            {name: "Osceola", slug: "osceola", filings: "16"},
+            {name: "Palm Beach", slug: "palm-beach", filings: "65"},
+            {name: "Pasco", slug: "pasco", filings: "27"},
+            {name: "Pinellas", slug: "pinellas", filings: "40"},
+            {name: "Polk", slug: "polk", filings: "42"},
+            {name: "Putnam", slug: "putnam", filings: "5"},
+            {name: "Santa Rosa", slug: "santa-rosa", filings: "10"},
+            {name: "Sarasota", slug: "sarasota", filings: "21"},
+            {name: "Seminole", slug: "seminole", filings: "15"},
+            {name: "St. Johns", slug: "st-johns", filings: "12"},
+            {name: "St. Lucie", slug: "st-lucie", filings: "13"},
+            {name: "Sumter", slug: "sumter", filings: "5"},
+            {name: "Suwannee", slug: "suwannee", filings: "1"},
+            {name: "Taylor", slug: "taylor", filings: "1"},
+            {name: "Union", slug: "union", filings: "1"},
+            {name: "Volusia", slug: "volusia", filings: "23"},
+            {name: "Wakulla", slug: "wakulla", filings: "1"},
+            {name: "Walton", slug: "walton", filings: "5"},
+            {name: "Washington", slug: "washington", filings: "2"}
+        ];
+        
+        // Populate all counties
+        const allCountiesGrid = document.getElementById('allCounties');
+        counties.sort((a, b) => a.name.localeCompare(b.name)).forEach(county => {
+            const card = document.createElement('a');
+            card.href = `./${county.slug}.html`;
+            card.className = 'county-card';
+            card.dataset.county = county.slug;
+            card.innerHTML = `
+                <div class="county-name">${county.name} County</div>
+                <div class="county-filings">${county.filings} weekly filings</div>
+            `;
+            allCountiesGrid.appendChild(card);
+        });
+        
+        // Search filter
+        function filterCounties() {
+            const search = document.getElementById('countySearch').value.toLowerCase();
+            const cards = document.querySelectorAll('.county-card');
+            const regions = document.querySelectorAll('[data-region]');
+            
+            cards.forEach(card => {
+                const county = card.dataset.county.toLowerCase();
+                const name = card.textContent.toLowerCase();
+                if (county.includes(search) || name.includes(search)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+            
+            // Hide empty regions
+            regions.forEach(region => {
+                const visibleCards = region.querySelectorAll('.county-card[style="display: block;"], .county-card:not([style])');
+                region.style.display = visibleCards.length > 0 ? 'block' : 'none';
+            });
+        }
+    </script>
+</body>
+</html>
