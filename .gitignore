@@ -1,0 +1,7 @@
+# Ignore generated files (keep in repo for GitHub Pages)
+# But exclude temp files
+*.tmp
+*.log
+.DS_Store
+.vscode/
+.idea/
